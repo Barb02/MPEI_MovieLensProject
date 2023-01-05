@@ -16,10 +16,9 @@ while true
         "5 - Exit");
     switch choice
         case 1
-            usersByMovie = getUsersByMovie(dicInfoByUser,NumUsers,filmId);
-            fprintf("This movie was evaluated by:\n")
-            for u = 1:length(usersByMovie)
-                fprintf("User ID: %d Full Name: %s %s\n", usersByMovie{u}{1}, usersByMovie{u}{2}, usersByMovie{u}{3});
+            usersByMovie = getUsersByMovie(Set,NumUsers,filmId);
+            for u = usersByMovie
+                fprintf("User ID:")
             end
         case 2
 
