@@ -1,6 +1,5 @@
 function [Set,NumUsers,users] = loadData(ficheiro)
     udata = load(ficheiro); % Carrega o ficheiro dos dados dos filmes
-    % Fica apenas com as duas primeiras colunas
     u = udata(1:end,1:3); clear udata;
     
     % Lista de utilizadores

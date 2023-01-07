@@ -1,4 +1,4 @@
-function assinaturas = minHashUsersByMovie(dicInfoByUser,numHash)
+function signatures = minHashUsersByMovie(dicInfoByUser,numHash)
 %MINHASH Summary of this function goes here
 %   Detailed explanation goes here
 
@@ -6,8 +6,8 @@ function assinaturas = minHashUsersByMovie(dicInfoByUser,numHash)
 Nm = 1682; % number of movies;
 
 %Nº linhas -> Nº users, Nº colunas -> Nº hash functions
-assinaturas = Inf(Nm,numHash);
-h = waitbar(0,'calculating movie signatures');
+signatures = Inf(Nm,numHash);
+h = waitbar(0,'Calculating movie signatures...');
 
 for i = 1:Nm
     usersByMovie = getUsersByMovie(dicInfoByUser,length(dicInfoByUser),i);
@@ -18,7 +18,7 @@ for i = 1:Nm
 
         key = num2str(usersByMovie{j,1});
         h_out = DJB31MA_multiple(key,127,numHash);
-        assinaturas(i,:) = min(h_out,assinaturas(i,:));
+        signatures(i,:) = min(h_out,signatures(i,:));
 
     end
 end
