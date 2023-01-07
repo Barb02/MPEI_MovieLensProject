@@ -1,6 +1,6 @@
 function sigInterests = minHashInterests(dicInfoByUser,NumUsers,numHashFunc)
     sigInterests = Inf(NumUsers,numHashFunc);
-    w = waitbar(0,'Calculating interests sigantures...');
+    w = waitbar(0,'calculating interests sigantures...');
 
     for n1 = 1:NumUsers
         waitbar(n1/NumUsers,w);
