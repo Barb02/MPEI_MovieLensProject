@@ -30,7 +30,25 @@ while true
             for u = 1:numUsersByMovie
                 usersByMovieIds(u,1) = usersByMovie{u,1};
             end
-            similarUsers = detectSimilarsByInterests(sigInterests,200,NumUsers,users,usersByMovieIds)
+            similarUsers = cell(numUsersByMovie,1);
+            for id = 1:numUsersByMovie
+                similarUsers{id} = detectSimilarsByInterests(id,sigInterests,200,users,usersByMovieIds);
+            end
+
+            user_appear_count = zeros(NumUsers,1);
+            user_appear_count(:,2) = 1:NumUsers;
+            for id=1:NumUsers
+                for j=1:numUsersByMovie
+                    if ismember(id,similarUsers{j})
+                        user_appear_count(id,1) = user_appear_count(id,1) + 1; 
+                    end    
+                end
+            end 
+            user_appear_count = sortrows(user_appear_count,1,"descend");
+            fprintf("We sugest the following users to evaluate this movie, based on common interests: \n");
+            fprintf("ID: %d; Full Name: %s %s\n", user_appear_count(1,2), dicInfoByUser{user_appear_count(1,2),2}, dicInfoByUser{user_appear_count(1,2),3});
+            fprintf("ID: %d; Full Name: %s %s\n", user_appear_count(2,2), dicInfoByUser{user_appear_count(2,2),2}, dicInfoByUser{user_appear_count(2,2),3});
+            
         case 4
        
         case 5
