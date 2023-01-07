@@ -14,17 +14,23 @@ while true
         "3 - Suggestion of users based on common interests",...
         "4 - Movies feedback based on popularity",...
         "5 - Exit");
+    usersByMovie = getUsersByMovie(dicInfoByUser,NumUsers,filmId);
+    numUsersByMovie = length(usersByMovie);
     switch choice
         case 1
-            usersByMovie = getUsersByMovie(dicInfoByUser,NumUsers,filmId);
             fprintf("This movie was evaluated by:\n")
-            for u = 1:length(usersByMovie)
-                fprintf("User ID: %d Full Name: %s %s\n", usersByMovie{u}{1}, usersByMovie{u}{2}, usersByMovie{u}{3});
+            for u = 1:numUsersByMovie
+                fprintf("User ID: %d Full Name: %s %s\n", usersByMovie{u,1}, usersByMovie{u,2}, usersByMovie{u,3});
             end
         case 2
-
+            
         case 3
-
+            load("sigInterests.mat");
+            usersByMovieIds = zeros(numUsersByMovie,1);
+            for u = 1:numUsersByMovie
+                usersByMovieIds(u,1) = usersByMovie{u,1};
+            end
+            similarUsers = detectSimilarsByInterests(sigInterests,200,NumUsers,users,usersByMovieIds)
         case 4
        
         case 5

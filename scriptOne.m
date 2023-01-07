@@ -7,4 +7,7 @@ dicInfoByUser(:,1:3) = dic(:,1:3);
 dicInfoByUser(:,4) = Set(:,1);
 dicInfoByUser(:,5:18) = dic(:,4:17);
 
-
+%% opção 3
+numHashFunc = 200;
+sigInterests = minHashInterests(dicInfoByUser,NumUsers,numHashFunc);
+save("sigInterests.mat","sigInterests");
