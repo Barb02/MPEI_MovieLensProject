@@ -11,7 +11,8 @@ h = waitbar(0,'calculating movie signatures');
 
 for i = 1:Nm
     usersByMovie = getUsersByMovie(dicInfoByUser,length(dicInfoByUser),i);
-    Nu = size(usersByMovie)(1);
+    numUsersByMovie = size(usersByMovie);
+    Nu = numUsersByMovie(1);
     waitbar(i/Nm,h);
     for j = 1:Nu
 

@@ -22,8 +22,8 @@ while true
             for u = 1:numUsersByMovie
                 fprintf("User ID: %d Full Name: %s %s\n", usersByMovie{u,1}, usersByMovie{u,2}, usersByMovie{u,3});
             end
-        case 2
 
+        case 2
             load("sigMovies.mat");
             similarMovies = sortrows(detectSimilarMoviesByUsers(sigMovies,0.9,200,filmId),3);
             mostSimilar = similarMovies(1:2,2);
@@ -33,12 +33,12 @@ while true
                m_users = getUsersByMovie(dicInfoByUser,NumUsers,movie);
                for i_user = 1:length(m_users(:,1))
                  user = m_users{i_user,1};
-                 if hasWatched(dicInfoByUser,user,mostSimilar) && !hasWatched(dicInfoByUser,user,filmId) && !visited(user)
-                    printf("User ID: %d Full Name: %s %s\n", user, m_users{i_user, 2}, m_users{i_user, 3})
-                 endif
+                 if hasWatched(dicInfoByUser,user,mostSimilar) && ~hasWatched(dicInfoByUser,user,filmId) && ~visited(user) 
+                    fprintf("User ID: %d Full Name: %s %s\n", user, m_users{i_user, 2}, m_users{i_user, 3})
+                 end
                  visited(user) = 1;
-               endfor
-            endfor
+               end
+            end
 
         case 3
             load("sigInterests.mat");

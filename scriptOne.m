@@ -15,7 +15,7 @@ dicInfoByUser(:,5:18) = dic(:,4:17);
 
 numHashFunc = 200;
 
-% opção 2
+%% opção 2
 sigMovies = minHashUsersByMovie(dicInfoByUser,numHashFunc);
 save("sigMovies.mat","sigMovies");
 
