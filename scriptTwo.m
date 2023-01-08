@@ -17,7 +17,8 @@ while true
         "4 - Movies feedback based on popularity",...
         "5 - Exit");
     usersByMovie = getUsersByMovie(dicInfoByUser,numUsers,filmId);
-    numUsersByMovie = length(usersByMovie);
+    numUsersByMovie = size(usersByMovie);
+    numUsersByMovie = numUsersByMovie(1);
     switch choice
         case 1
             fprintf("This movie was evaluated by:\n")
@@ -27,7 +28,14 @@ while true
         case 2
 
             similarMovies = sortrows(detectSimilarMoviesByUsers(sigMovies,0.9,200,filmId),3);
-            mostSimilar = similarMovies(1:2,2);
+            s = size(similarMovies);
+            s = s(1);
+            if s < 2
+              printf("there are no movies similar to this one\n")
+              continue
+            else
+              mostSimilar = similarMovies(1:2,2);
+            end
             visited = zeros(1,numUsers);
             printf("We suggest the following users to evaluate this movie:\n\n")
             for i_movie = 1:length(mostSimilar)
@@ -63,9 +71,9 @@ while true
             end
 
             %matlab
-            user_appear_count = sortrows(user_appear_count,1,"descend");
+            %user_appear_count = sortrows(user_appear_count,1,"descend");
             %octave
-            %user_appear_count = sortrows(user_appear_count,-1);
+            user_appear_count = sortrows(user_appear_count,-1);
 
             fprintf("\nWe sugest the following users to evaluate this movie, based on common interests: \n");
             fprintf("ID: %d; Full Name: %s %s\n", user_appear_count(1,2), dicInfoByUser{user_appear_count(1,2),2}, dicInfoByUser{user_appear_count(1,2),3});
