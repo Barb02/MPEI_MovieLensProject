@@ -4,11 +4,11 @@
 dic = readcell("users.txt","Delimiter",";");
 movieTitles = readcell("film_info.txt","Delimiter","\t");
 
-% ON OCTAVE USE THIS
-% dic = csv2cell("users2.txt",';');
-% dic = dic(2:944,:);
-% movieTitles = csv2cell("film_info2.txt","\t");
-% movieTitles = movieTitles(2:1683,:);
+% ON OCTAVE USE THIS - requires IO package to be loaded
+%dic = csv2cell("users2.txt",';');
+%dic = dic(2:944,:);
+%movieTitles = csv2cell("film_info2.txt","\t");
+%movieTitles = movieTitles(2:1683,:);
 
 % adicionar toda a informação de cada user em apenas um set
 dicInfoByUser = cell(numUsers,18);
@@ -17,7 +17,7 @@ dicInfoByUser(:,4) = moviesByUser(:,1);
 dicInfoByUser(:,5:18) = dic(:,4:17);
 numHash = 200;
 
-% opção 1
+% opção 4
 counting_bf = bloom_filter_initialize(16000);
 bf_numHash = 6;
 
@@ -57,7 +57,7 @@ sigMovies = minHashUsersByMovie(dicInfoByUser,numHash);
 numHashInterest = 500;
 sigInterests = minHashInterests(dicInfoByUser,numUsers,numHashInterest);
 
-save("data.mat","shingleSize","numUsers","numHash","numHashInterest","counting_bf","bf_numHash","sigTitles","sigMovies","sigInterests")
+save("data.mat","users","numUsers","dicInfoByUser","shingleSize","numHash","numHashInterest","counting_bf","bf_numHash","sigTitles","sigMovies","sigInterests")
 
 
 

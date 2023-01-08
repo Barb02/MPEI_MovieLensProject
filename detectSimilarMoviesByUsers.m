@@ -1,10 +1,7 @@
 function SimilarMovies = detectSimilarMoviesByUsers(assinaturas,threshold,numHash,movie)
-  %OBTERSIMILARESHASH Summary of this function goes here
-  %   Detailed explanation goes here
 
   movies = [1:1682];
   Nm = length(movies);
-  % Array para guardar pares similares (user1, user2, distancia)
   SimilarMovies = zeros(1,3);
   k= 1;
 

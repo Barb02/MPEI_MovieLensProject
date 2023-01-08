@@ -7,6 +7,11 @@ while filmId < 1 || filmId > 1682
     end
 end
 
+if ~isfile("data.mat")
+  printf("please run script one before running script two\n")
+  return
+end
+
 load("data.mat");
 
 while true
@@ -43,15 +48,15 @@ while true
                m_users = getUsersByMovie(dicInfoByUser,numUsers,movie);
                for i_user = 1:length(m_users(:,1))
                  user = m_users{i_user,1};
-                 if hasWatched(dicInfoByUser,user,mostSimilar) && ~hasWatched(dicInfoByUser,user,filmId) && ~visited(user)
+                 if hasWatched(dicInfoByUser,user,movie) && ~hasWatched(dicInfoByUser,user,filmId) && ~visited(user)
                     printf("User ID: %d Full Name: %s %s\n", user, m_users{i_user, 2}, m_users{i_user, 3})
-                 endif
-                 visited(user) = 1;
                  end
+                 visited(user) = 1;
                end
             end
 
         case 3
+
             usersByMovieIds = zeros(numUsersByMovie,1);
             for u = 1:numUsersByMovie
                 usersByMovieIds(u,1) = usersByMovie{u,1};

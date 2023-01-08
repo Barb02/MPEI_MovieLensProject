@@ -11,5 +11,4 @@ function h_out = DJB31MA_multiple( chave, seed, K)
     h = mod(31 * h + j, 2^32 -1);
     h_out(j)= h;
   end
-
 end
