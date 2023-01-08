@@ -72,9 +72,9 @@ while true
             end
 
             %matlab
-            %user_appear_count = sortrows(user_appear_count,1,"descend");
+            user_appear_count = sortrows(user_appear_count,1,"descend");
             %octave
-            user_appear_count = sortrows(user_appear_count,-1);
+            %user_appear_count = sortrows(user_appear_count,-1);
 
             fprintf("\nWe sugest the following users to evaluate this movie, based on common interests: \n");
             fprintf("ID: %d; Full Name: %s %s\n", user_appear_count(1,2), dicInfoByUser{user_appear_count(1,2),2}, dicInfoByUser{user_appear_count(1,2),3});
@@ -83,7 +83,12 @@ while true
 
         case 4
 
-            movie_name = input("Insert movie name (or part of movie name): ", 's');
+            movie_name = input("Insert movie name (or part of movie name with at least 3 letters): ", 's');
+
+            if length(movie_name)<shingleSize
+                fprintf("\nError. Please insert more than 3 letters.\n");
+                continue
+            end
 
             for i = 1:(length(movie_name)-shingleSize+1)
 
@@ -98,7 +103,7 @@ while true
             for i = 1:3
               title_id = similarTitles(i,1);
               times_evaluated = bloom_filter_get_element(counting_bf,title_id,bf_numHash);
-              fprintf("ID: %d\nMovie Title: %s\nAmount of scores above a 3: %d \n\n", title_id, movieTitles{title_id},times_evaluated);
+              fprintf("ID: %d\nMovie Title: %s\nAmount of scores above '3': %d \n\n", title_id, movieTitles{title_id},times_evaluated);
             end
 
             clear shingle_set

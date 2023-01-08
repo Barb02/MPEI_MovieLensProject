@@ -15,14 +15,14 @@ dicInfoByUser = cell(numUsers,18);
 dicInfoByUser(:,1:3) = dic(:,1:3);
 dicInfoByUser(:,4) = moviesByUser(:,1);
 dicInfoByUser(:,5:18) = dic(:,4:17);
+numHash = 200;
 
 % opção 1
-numHash = 200;
 counting_bf = bloom_filter_initialize(16000);
 bf_numHash = 6;
 
 % criar e encher o counting_bf
-h = waitbar(0,'populating the counting bloom filter');
+h = waitbar(0,'Populating the counting bloom filter...');
 for user_id = 1:numUsers
   waitbar(user_id/numUsers,h);
   movies = dicInfoByUser{user_id,4};
@@ -38,7 +38,7 @@ delete(h)
 
 % obter as assinaturas dos filtros
 shingleSize = 3;
-h = waitbar(0,'separating titles into shingles');
+h = waitbar(0,'Separating titles into shingles...');
 for i = 1:length(movieTitles)
   waitbar(i/length(movieTitles),h);
   title = movieTitles{i,1};
@@ -51,14 +51,13 @@ delete(h)
 sigTitles = minHashTitles(titles_shingle_set,numHash);
 
 %% opção 2
-numHash = 200;
 sigMovies = minHashUsersByMovie(dicInfoByUser,numHash);
 
 %% opção 3
-numHash = 500;
-sigInterests = minHashInterests(dicInfoByUser,numUsers,numHash);
+numHashInterest = 500;
+sigInterests = minHashInterests(dicInfoByUser,numUsers,numHashInterest);
 
-save("data.mat","shingleSize","numUsers","numHash","counting_bf","bf_numHash","sigTitles","sigMovies","sigInterests")
+save("data.mat","shingleSize","numUsers","numHash","numHashInterest","counting_bf","bf_numHash","sigTitles","sigMovies","sigInterests")
 
 
 
