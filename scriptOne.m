@@ -5,10 +5,10 @@ dic = readcell("users.txt","Delimiter",";");
 movieTitles = readcell("film_info.txt","Delimiter","\t");
 
 % ON OCTAVE USE THIS
-%dic = csv2cell("users2.txt",';');
-%dic = dic(2:944,:);
-%movieTitles = csv2cell("film_info2.txt","\t");
-%movieTitles = movieTitles(2:1683,:);
+% dic = csv2cell("users2.txt",';');
+% dic = dic(2:944,:);
+% movieTitles = csv2cell("film_info2.txt","\t");
+% movieTitles = movieTitles(2:1683,:);
 
 % adicionar toda a informação de cada user em apenas um set
 dicInfoByUser = cell(numUsers,18);
@@ -18,7 +18,7 @@ dicInfoByUser(:,5:18) = dic(:,4:17);
 
 % opção 1
 numHash = 200;
-counting_bf = bloom_filter_initialize(10000);
+counting_bf = bloom_filter_initialize(16000);
 bf_numHash = 6;
 
 % criar e encher o counting_bf
