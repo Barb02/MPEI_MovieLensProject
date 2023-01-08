@@ -63,7 +63,7 @@ while true
             end
             similarUsers = cell(numUsersByMovie,1);
             for id = 1:numUsersByMovie
-                similarUsers{id} = detectSimilarsByInterests(id,sigInterests,200,users,usersByMovieIds);
+                similarUsers{id} = detectSimilarsByInterests(id,sigInterests,numHash,users,usersByMovieIds);
             end
 
             user_appear_count = zeros(numUsers,1);

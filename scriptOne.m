@@ -50,12 +50,11 @@ end
 delete(h)
 sigTitles = minHashTitles(titles_shingle_set,numHash);
 
-%% opção 2
+% opção 2
 sigMovies = minHashUsersByMovie(dicInfoByUser,numHash);
 
-%% opção 3
-numHashInterest = 500;
-sigInterests = minHashInterests(dicInfoByUser,numUsers,numHashInterest);
+% opção 3
+sigInterests = minHashInterests(dicInfoByUser,numUsers,numHash);
 
 save("data.mat","users","numUsers","dicInfoByUser","shingleSize","numHash","numHashInterest","counting_bf","bf_numHash","sigTitles","sigMovies","sigInterests")
 
