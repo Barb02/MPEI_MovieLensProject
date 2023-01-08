@@ -5,4 +5,4 @@ function filter = bloom_filter_increment (filter, element, k)
     h = mod(DJB31MA(key, k),length(filter)) + 1;
     filter(h) = filter(h) + 1;
   end
-endfunction
+end

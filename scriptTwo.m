@@ -39,8 +39,9 @@ while true
                     printf("User ID: %d Full Name: %s %s\n", user, m_users{i_user, 2}, m_users{i_user, 3})
                  endif
                  visited(user) = 1;
-               endfor
-            endfor
+                 end
+               end
+            end
 
         case 3
             usersByMovieIds = zeros(numUsersByMovie,1);
@@ -74,7 +75,7 @@ while true
 
         case 4
 
-            movie_name = input("insira o nome (ou parte do nome) de um filme: ", 's');
+            movie_name = input("Insert movie name (or part of movie name): ", 's');
 
             for i = 1:(length(movie_name)-shingleSize+1)
 
