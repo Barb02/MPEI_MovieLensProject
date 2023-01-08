@@ -17,7 +17,7 @@ dicInfoByUser(:,4) = moviesByUser(:,1);
 dicInfoByUser(:,5:18) = dic(:,4:17);
 numHash = 200;
 
-% opção 1
+% opção 4
 counting_bf = bloom_filter_initialize(16000);
 bf_numHash = 6;
 
@@ -50,14 +50,13 @@ end
 delete(h)
 sigTitles = minHashTitles(titles_shingle_set,numHash);
 
-%% opção 2
+% opção 2
 sigMovies = minHashUsersByMovie(dicInfoByUser,numHash);
 
-%% opção 3
-numHashInterest = 500;
-sigInterests = minHashInterests(dicInfoByUser,numUsers,numHashInterest);
+% opção 3
+sigInterests = minHashInterests(dicInfoByUser,numUsers,numHash);
 
-save("data.mat","shingleSize","numUsers","numHash","numHashInterest","counting_bf","bf_numHash","sigTitles","sigMovies","sigInterests")
+save("data.mat","shingleSize","numUsers","dicInfoByUser","numHash","sigInterests","counting_bf","bf_numHash","sigTitles","sigMovies","sigInterests")
 
 
 

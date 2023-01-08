@@ -7,7 +7,7 @@ Nm = 1682; % number of movies;
 
 %Nº linhas -> Nº users, Nº colunas -> Nº hash functions
 signatures = Inf(Nm,numHash);
-h = waitbar(0,'calculating movie signatures...');
+h = waitbar(0,'Calculating movie signatures...');
 
 for i = 1:Nm
     usersByMovie = getUsersByMovie(dicInfoByUser,length(dicInfoByUser),i);
