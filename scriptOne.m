@@ -1,14 +1,7 @@
 [moviesByUser,numUsers,users] = loadData('u.data');
 
-% ON MATLAB USE THIS
 dic = readcell("users.txt","Delimiter",";");
 movieTitles = readcell("film_info.txt","Delimiter","\t");
-
-% ON OCTAVE USE THIS - requires IO package to be loaded
-%dic = csv2cell("users2.txt",';');
-%dic = dic(2:944,:);
-%movieTitles = csv2cell("film_info2.txt","\t");
-%movieTitles = movieTitles(2:1683,:);
 
 % adicionar toda a informação de cada user em apenas um set
 dicInfoByUser = cell(numUsers,18);

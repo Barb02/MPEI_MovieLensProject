@@ -75,11 +75,8 @@ while true
                     end
                 end
             end
-
-            %matlab
+        
             user_appear_count = sortrows(user_appear_count,1,"descend");
-            %octave
-            %user_appear_count = sortrows(user_appear_count,-1);
 
             fprintf("\nWe sugest the following users to evaluate this movie, based on common interests: \n");
             fprintf("ID: %d; Full Name: %s %s\n", user_appear_count(1,2), dicInfoByUser{user_appear_count(1,2),2}, dicInfoByUser{user_appear_count(1,2),3});
