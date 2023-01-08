@@ -8,7 +8,7 @@ while filmId < 1 || filmId > 1682
 end
 
 if ~isfile("data.mat")
-  printf("please run script one before running script two\n")
+  fprintf("Please run script one before running script two\n")
   return
 end
 
@@ -36,20 +36,20 @@ while true
             s = size(similarMovies);
             s = s(1);
             if s < 2
-              printf("there are no movies similar to this one\n")
+              fprintf("There are no movies similar to this one\n")
               continue
             else
               mostSimilar = similarMovies(1:2,2);
             end
             visited = zeros(1,numUsers);
-            printf("We suggest the following users to evaluate this movie:\n\n")
+            fprintf("We suggest the following users to evaluate this movie:\n\n")
             for i_movie = 1:length(mostSimilar)
                movie = mostSimilar(i_movie);
                m_users = getUsersByMovie(dicInfoByUser,numUsers,movie);
                for i_user = 1:length(m_users(:,1))
                  user = m_users{i_user,1};
                  if hasWatched(dicInfoByUser,user,movie) && ~hasWatched(dicInfoByUser,user,filmId) && ~visited(user)
-                    printf("User ID: %d Full Name: %s %s\n", user, m_users{i_user, 2}, m_users{i_user, 3})
+                    fprintf("User ID: %d Full Name: %s %s\n", user, m_users{i_user, 2}, m_users{i_user, 3})
                  end
                  visited(user) = 1;
                end
@@ -91,7 +91,7 @@ while true
             movie_name = input("Insert movie name (or part of movie name with at least 3 letters): ", 's');
 
             if length(movie_name)<shingleSize
-                fprintf("\nError. Please insert more than 3 letters.\n");
+                fprintf("\nError. Please insert at least 3 letters.\n");
                 continue
             end
 

@@ -16,7 +16,7 @@ function sigInterests = minHashInterests(dicInfoByUser,NumUsers,numHash)
 
         for i = 1:Ninterests
             key = interests{i};
-            h_out = DJB31MA_multiple(key,19,numHash);
+            h_out = DJB31MA_multiple(key,127,numHash);
             sigInterests(n1,:) = min(h_out, sigInterests(n1,:));
         end
      end

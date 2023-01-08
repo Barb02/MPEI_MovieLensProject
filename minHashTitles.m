@@ -12,7 +12,7 @@ function signatures = minHashTitles(shingles,numHash)
       if isempty(key)
         break
       end
-      h_out = DJB31MA_multiple(key,19,numHash);
+      h_out = DJB31MA_multiple(key,127,numHash);
       signatures(i,:) = min(h_out,signatures(i,:));
 
     end
