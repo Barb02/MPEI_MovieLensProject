@@ -1,5 +1,5 @@
-function sigInterests = minHashInterests(dicInfoByUser,NumUsers,numHashFunc)
-    sigInterests = Inf(NumUsers,numHashFunc);
+function sigInterests = minHashInterests(dicInfoByUser,NumUsers,numHash)
+    sigInterests = Inf(NumUsers,numHash);
     w = waitbar(0,'Calculating interests sigantures...');
 
     for n1 = 1:NumUsers
@@ -16,7 +16,7 @@ function sigInterests = minHashInterests(dicInfoByUser,NumUsers,numHashFunc)
 
         for i = 1:Ninterests
             key = interests{i};
-            h_out = DJB31MA_multiple(key,127,numHashFunc);
+            h_out = DJB31MA_multiple(key,19,numHash);
             sigInterests(n1,:) = min(h_out, sigInterests(n1,:));
         end
      end
