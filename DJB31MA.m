@@ -1,4 +1,4 @@
-function h= DJB31MA( chave, seed, K)
+function h= DJB31MA( chave, seed)
   len= length(chave);
   chave= double(chave);
   h= seed;
